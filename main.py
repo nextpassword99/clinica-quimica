@@ -57,3 +57,33 @@ def ejecutar_query(query, params=None, is_select=False):
             cursor.close()
             conn.close()
 
+
+def obtenerImcPorDni(dni: int):
+    """
+    Obtiene el IMC (índice de Masa Corporal) de un paciente mediante su DNI.
+
+    Parámetros:
+    dni (int): El DNI del paciente.
+
+    returns:
+    list: Devuelve una lista con los datos del IMC calculado y la clasificación del paciente.
+    """
+    query_detalles_imc_usuario = """
+    SELECT DNI,
+           nombre,
+           apellido,
+           TIMESTAMPDIFF(YEAR, fecha_nacimiento, CURDATE()) AS edad,
+           peso / ((talla / 100) * (talla / 100)) AS imc,
+           CASE
+               WHEN peso / ((talla / 100) * (talla / 100)) < 18.5 THEN 'Bajo peso'
+               WHEN peso / ((talla / 100) * (talla / 100)) BETWEEN 18.5 AND 24.9 THEN 'Normal'
+               WHEN peso / ((talla / 100) * (talla / 100)) BETWEEN 25 AND 29.9 THEN 'Sobrepeso'
+               ELSE 'Obesidad'
+           END AS clasificacion_imc
+    FROM t_paciente
+    WHERE DNI = %s;
+    """
+    params = (dni,)
+    return ejecutar_query(query_detalles_imc_usuario, params, is_select=True)
+
+
