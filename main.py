@@ -172,3 +172,24 @@ def crearCita(paciente_id: int, medico_id: int, fecha_hora: str, motivo: str):
     print("Cita creada con éxito")
 
 
+def agregarTratamiento(cita_id: int, medicamento_id: int, cantidad: float, descripcion: str, costo: float):
+    """
+    Agrega un tratamiento a una cita médica específica.
+
+    Parámetros:
+    cita_id (int): El ID de la cita médica.
+    medicamento_id (int): El ID del medicamento.
+    cantidad (float): La cantidad del medicamento.
+    descripcion (str): La descripción del tratamiento.
+    costo (float): El costo del tratamiento.
+
+    returns:
+    None. Imprime un mensaje de éxito al finalizar.
+    """
+    query = """
+    INSERT INTO t_tratamientos (cita_id, medicamento_id, cantidad, descripcion, costo, fecha_tratamiento)
+    VALUES (%s, %s, %s, %s, %s, CURDATE());
+    """
+    params = (cita_id, medicamento_id, cantidad, descripcion, costo)
+    ejecutar_query(query, params, is_select=False)
+    print("Tratamiento agregado con éxito")
