@@ -1,0 +1,19 @@
+Menú de registro
+- IMC
+- Anemia
+- historial consultas
+- Lista de médicos
+- Ver tratamientos por usuario
+- Agregar tratamientos
+
+
+CAmbiar t_médicos por t_medicamentos
+Cambiar t_especialidaddes por tipo de medicamento
+
+t_tratamientos agregar tipo de medicamento y agregar cantidad.
+
+Ingenria quimica
+
+pacientes:
+- Agregar ubicación geográfica para segmentar por territorio (anemia, imc).
+- 
