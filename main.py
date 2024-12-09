@@ -231,25 +231,6 @@ def nuevoPaciente(dni: int, nombre: str, apellido: str, fecha_nacimiento: str, s
         print("Paciente creado con éxito")
 
 
-def eliminarPaciente(dni: int):
-    """
-    Elimina un paciente de la base de datos.
-
-    Parámetros:
-    dni (int): El DNI del paciente a eliminar.
-
-    returns:
-    None. Imprime un mensaje de éxito al finalizar.
-    """
-
-    query = """
-    DELETE FROM t_paciente WHERE DNI = %s;
-    """
-    params = (dni,)
-    ejecutar_query(query, params, is_select=False)
-    print("Paciente eliminado con éxito")
-
-
 def actualizarPaciente(dni: int, nombre: str, apellido: str, fecha_nacimiento: str, sexo: str, telefono: str, nivel_emoglobina: float, hematocrito: float, peso: float, talla: float, ubicacion: str):
     """
     Actualiza la información de un paciente en la base de datos.
