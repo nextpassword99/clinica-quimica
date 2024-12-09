@@ -293,10 +293,9 @@ def main():
     3. Crear una cita
     4. Ver la lista de médicos
     5. Agregar un tratamiento
-    6. Eliminar un paciente
-    7. Actualizar un paciente
-    8. Ver los tratamientos por cita
-    9. Salir
+    6. Actualizar un paciente
+    7. Ver los tratamientos por cita
+    8. Salir
 
     Cada opción tiene su propia funcionalidad y permite realizar las operaciones
     correspondientes según las necesidades del usuario.
@@ -310,10 +309,9 @@ def main():
         3. Crear cita
         4. Ver lista de médicos
         5. Agregar tratamiento
-        6. Eliminar paciente
-        7. Actualizar paciente
-        8. Ver tratamientos por cita
-        9. Salir
+        6. Actualizar paciente
+        7. Ver tratamientos por cita
+        8. Salir
         """)
 
         try:
@@ -407,14 +405,6 @@ def main():
                                    cantidad, descripcion, costo)
             except ValueError:
                 print("Datos incorrectos. Asegúrese de ingresar valores válidos.")
-                continue
-
-        elif opt == 6:
-            try:
-                dni = int(input("Introduce el DNI del paciente a eliminar: "))
-                eliminarPaciente(dni)
-            except ValueError:
-                print("El DNI ingresado no es válido.")
                 continue
 
         elif opt == 7:
