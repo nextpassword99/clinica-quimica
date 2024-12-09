@@ -134,3 +134,19 @@ def obtenerHistorialConsultas(dni: int):
     params = (dni,)
     return ejecutar_query(query_historial_consultas, params, is_select=True)
 
+
+def obtenerListaMedicos():
+    """
+    Obtiene la lista de todos los médicos registrados en la base de datos.
+
+    returns:
+    list: Devuelve una lista con los datos de todos los médicos, incluyendo su ID, nombre, apellido y especialidad.
+    """
+
+    query_lista_medicos = """
+    SELECT medico_id, nombre, apellido, especialidad
+    FROM t_medicos;
+    """
+    return ejecutar_query(query_lista_medicos, is_select=True)
+
+
