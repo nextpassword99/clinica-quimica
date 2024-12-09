@@ -1,10 +1,10 @@
 # **Documentación del Proyecto de Clínica**
 
-### **1. Descripción General**
+## **1. Descripción General**
 
 Este sistema está diseñado para manejar información de una clínica, que incluye la gestión de pacientes, citas médicas, tratamientos, análisis de resultados médicos y gestión de médicos. Proporciona varias funcionalidades que permiten crear y actualizar registros de pacientes, gestionar citas, obtener información médica (como el IMC y los niveles de hemoglobina) y manejar los tratamientos asociados a las citas.
 
-### **2. Funciones y Métodos**
+## **2. Funciones y Métodos**
 
 #### **2.1. `get_connection()`**
 
@@ -119,9 +119,7 @@ Este sistema está diseñado para manejar información de una clínica, que incl
   - `cita_id`: El ID de la cita médica.
 - **Retorno:** Devuelve una lista con los detalles de los tratamientos asociados a la cita.
 
----
-
-### **3. Interfaz de Usuario**
+## **3. Interfaz de Usuario**
 
 La interfaz de usuario es un menú interactivo que permite al usuario seleccionar distintas opciones para gestionar pacientes, médicos, citas y tratamientos.
 
@@ -139,9 +137,7 @@ El menú presenta las siguientes opciones:
 
 Cada opción tiene su propia funcionalidad y permite realizar las operaciones correspondientes según las necesidades del usuario.
 
----
-
-### **4. Manejo de Errores y Validaciones**
+## **4. Manejo de Errores y Validaciones**
 
 Las funciones de consulta incluyen manejo de errores y validaciones para garantizar que los datos ingresados sean correctos y que no haya problemas al interactuar con la base de datos:
 
@@ -149,12 +145,8 @@ Las funciones de consulta incluyen manejo de errores y validaciones para garanti
 - **Datos no encontrados:** Si no se encuentran registros en la base de datos (por ejemplo, no hay historial de citas o datos de IMC), se informa al usuario.
 - **Existencia de paciente:** Al intentar crear un nuevo paciente, se valida si el paciente ya existe en la base de datos mediante el DNI.
 
----
-
-### **5. Requisitos**
+## **5. Requisitos**
 
 - Python 3.x
 - MySQL (conector `mysql-connector-python`)
-- Una base de datos MySQL configurada con las tablas `t_paciente`, `t_medicos
-
-`, `t_citas`, `t_tratamientos`, `t_medicamentos`.
+- Una base de datos MySQL configurada con las tablas `t_paciente`, `t_medicos`, `t_citas`, `t_tratamientos`, `t_medicamentos`.
