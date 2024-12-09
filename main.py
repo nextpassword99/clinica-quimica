@@ -150,3 +150,25 @@ def obtenerListaMedicos():
     return ejecutar_query(query_lista_medicos, is_select=True)
 
 
+def crearCita(paciente_id: int, medico_id: int, fecha_hora: str, motivo: str):
+    """
+    Crea una nueva cita médica para un paciente con un médico específico.
+
+    Parámetros:
+    paciente_id (int): El ID del paciente.
+    medico_id (int): El ID del médico.
+    fecha_hora (str): La fecha y hora de la cita en formato 'YYYY-MM-DD HH:MM:SS'.
+    motivo (str): El motivo de la cita.
+
+    returns:
+    None. Imprime un mensaje de éxito al finalizar.
+    """
+    query_crear_cita = """
+    INSERT INTO t_citas (paciente_id, medico_id, fecha_hora, motivo, estado)
+    VALUES (%s, %s, %s, %s, 'pendiente');
+    """
+    params = (paciente_id, medico_id, fecha_hora, motivo)
+    ejecutar_query(query_crear_cita, params, is_select=False)
+    print("Cita creada con éxito")
+
+
