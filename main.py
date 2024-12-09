@@ -114,3 +114,23 @@ def obtenerAnemiaPorDni(dni: int):
     return ejecutar_query(query_anemia_usuario, params, is_select=True)
 
 
+def obtenerHistorialConsultas(dni: int):
+    """
+    Obtiene el historial de consultas médicas de un paciente.
+
+    Parámetros:
+    dni (int): El DNI del paciente.
+
+    returns:
+    list: Devuelve una lista con los detalles de cada cita realizada por el paciente.
+    """
+    query_historial_consultas = """
+    SELECT c.fecha_hora, c.motivo, c.estado, m.nombre AS medico, m.apellido
+    FROM t_citas c
+    JOIN t_medicos m ON c.medico_id = m.medico_id
+    WHERE c.paciente_id = %s
+    ORDER BY c.fecha_hora DESC;
+    """
+    params = (dni,)
+    return ejecutar_query(query_historial_consultas, params, is_select=True)
+
