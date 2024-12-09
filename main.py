@@ -87,3 +87,30 @@ def obtenerImcPorDni(dni: int):
     return ejecutar_query(query_detalles_imc_usuario, params, is_select=True)
 
 
+def obtenerAnemiaPorDni(dni: int):
+    """
+    Obtiene el análisis de anemia de un paciente mediante su DNI.
+
+    Parámetros:
+    dni (int): El DNI del paciente.
+
+    returns:
+    list: Devuelve una lista con los datos del paciente y su clasificación de anemia (Anemia o Normal).
+    """
+    query_anemia_usuario = """
+    SELECT DNI,
+           nombre,
+           apellido,
+           nivel_emoglobina,
+           hematocrito,
+           CASE
+               WHEN nivel_emoglobina < 12 THEN 'Anemia'
+               ELSE 'Normal'
+           END AS clasificacion_anemia
+    FROM t_paciente
+    WHERE DNI = %s;
+    """
+    params = (dni,)
+    return ejecutar_query(query_anemia_usuario, params, is_select=True)
+
+
